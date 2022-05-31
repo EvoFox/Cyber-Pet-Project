@@ -111,14 +111,22 @@ try {
     }
 
     const timer = async () => {
+        // Timer: Every minute, decrease the pets stats
         await setInterval(() => {
             myPet.decreaseStats();
-        }, 15000);
+        }, 60000);
 
+        // This 
+        if (myPet.checkAlive())
+        {        
         // This causes some graphical issues on the terminal, though prevents a memory leak
         // from calling the game function too many times.
-        myPet.checkAlive();
-        game(game);
+        game(game);    
+        } else
+        {
+            console.log(`${myPet.name}'s health has gotten too low, we're taking them away.`);
+        }
+        
     }
 
     const game = async (callback) => {
@@ -155,7 +163,7 @@ try {
                 myPet.walk();
                 break;
         }
-        
+
 
         callback(game)
 
