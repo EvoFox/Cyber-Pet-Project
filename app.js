@@ -24,7 +24,6 @@ potentialPets = [{
     }
 ]
 
-
 try {
     let myPet = "";
     let options = [];
@@ -79,8 +78,7 @@ try {
                     name: "Let Sleep",
                     value: "sleep",
                 }
-            ]
-            // console.log(myPet);
+            ];
         } else if (typeOfPet.typeOfPet === "dog") {
             myPet = new Dog(petName.nameOfPet);
             options = [{
@@ -104,29 +102,28 @@ try {
                     value: "walk",
                 }
             ]
-            // console.log(myPet);
         }
         timer()
+
         callback(game)
     }
 
+    const restartGame = () => {
+        // Placeholder function for the moment, while I work out how to implement this properly
+        myPet = "";
+        options = [];
+        start();
+    }
     const timer = async () => {
         // Timer: Every minute, decrease the pets stats
         await setInterval(() => {
-            myPet.decreaseStats();
-        }, 60000);
+            if (!myPet.decreaseStats()) {
+                // This is a placeholder for the moment, as I would like to offer the end user an option to restart the game
+                console.log(`${myPet.name}'s health has gotten too low, we're taking them away.`);
+                process.exit(0)
+            }
+        }, 1000);
 
-        // This 
-        if (myPet.checkAlive())
-        {        
-        // This causes some graphical issues on the terminal, though prevents a memory leak
-        // from calling the game function too many times.
-        game(game);    
-        } else
-        {
-            console.log(`${myPet.name}'s health has gotten too low, we're taking them away.`);
-        }
-        
     }
 
     const game = async (callback) => {
@@ -166,24 +163,9 @@ try {
 
 
         callback(game)
-
-
     }
 
-    // const mainGame = async () => {
-    //     setInterval(() => {
-    //         
-
-    //         myPet.decreaseStats();
-    //     }, 5000);
-
-
-
-
-    // }
-
     start(game);
-
 
 } catch (error) {
     console.log("Error fetching data! ", error)

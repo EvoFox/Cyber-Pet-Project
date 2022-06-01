@@ -7,14 +7,12 @@ class Animal {
         this.thirst = 100;
     }
     eat() {
-
-        console.log(`\n\n${this.name} takes a moment to eat, recovering its thirst to ${this.thirst}.`);
         this.hunger += 10;
+        console.log(`\n\n${this.name} takes a moment to eat, recovering its thirst to ${this.thirst}.`);
     }
     drink() {
-        // TODO: add flavour text to this function
-        console.log(`\n\n${this.name} takes a drink of water, recovering its thirst to ${this.thirst}.`);
         this.thirst += 10;
+        console.log(`\n\n${this.name} takes a drink of water, recovering its thirst to ${this.thirst}.`);
     }
     checkAlive() {
         if (this.health <= 0) {
@@ -44,11 +42,16 @@ class Animal {
 
         this.thirst -= decreaseThirst;
         this.hunger -= decreaseHunger;
+        this.checkStats();
 
+        //Returns true or false, depending on stats
+        return this.checkAlive();
+
+    }
+    checkStats() {
         console.log(`\n\n${this.name}'s stats are now: `);
         console.table(this)
     }
-
 }
 
 // Specific pet class, contains unique properties and methods for the virtual pet
@@ -58,12 +61,15 @@ class Dog extends Animal {
     }
     playBall() {
         this.health += 10;
-        this.hunger -= 20;
-        console.log("\n\nball")
+        this.thirst -= 20;
+        console.log(`\n\nYou spend some time playing fetch with ${this.name}, increasing its health by 10, but reducing its thirst by 20!`);
+        this.checkStats();
     }
     walk() {
         this.health += 10;
-        this.thirst -= 20;
+        this.hunger -= 20;
+        console.log(`\n\nYou spend some time taking ${this.name} on a walk, increasing its health by 10, but reducing its hunger by 20!`);
+        this.checkStats();
     }
 
 }
@@ -76,10 +82,14 @@ class Cat extends Animal {
     playWool() {
         this.health += 10;
         this.hunger -= 20;
+        console.log(`\n\nYou spend some time teasing ${this.name} with a ball of wool, increasing its health by 10, but reducing its hunger by 20!`);
+        this.checkStats();
     }
     sleep() {
         this.health += 20;
-        this.hunger -= 10;
+        this.thirst -= 10;
+        console.log(`\n\nYou spend some time playing fetch with ${this.name}, increasing its health by 20, but reducing its thirst by 10!`);
+        this.checkStats();
     }
 }
 
