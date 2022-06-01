@@ -50,7 +50,7 @@ class Animal {
     }
     checkStats() {
         console.log(`\n\n${this.name}'s stats are now: `);
-        console.table(this)
+        console.table(this);
     }
 }
 
@@ -93,7 +93,73 @@ class Cat extends Animal {
     }
 }
 
+// Specific pet class, contains unique properties and methods for the virtual pet
+class Parrot extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    fly() {
+        this.health += 10;
+        this.thirst -= 20;
+        // this.fun += 15;
+        console.log(`\n\nYou spend some time with ${this.name} letting them fly around the room, increasing its health by 10, but reducing its thirst by 20!`);
+        this.checkStats();
+    }
+    puzzle() {
+        this.health += 20;
+        this.hunger -= 5;
+        console.log(`\n\nYou spend some time giving puzzles to ${this.name}, time flies by and they seem happier, increasing its health by 20, but reducing its hunger by 5.`);
+        // this.fun += 25;
+        this.checkStats();
+    }
+}
+
+// Specific pet class, contains unique properties and methods for the virtual pet
+class Dragon extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    ride() {
+        this.health += 15;
+        this.hunger -= 20;
+        // this.fun += 15;
+        console.log(`\n\nYou take ${this.name} out on a flight, soaring through the skies increasing it's health by 15, but reducing its hunger by 20.`);
+        this.checkStats();
+
+    }
+    gold() {
+        this.health -= 25;
+        // this.fun += 50;
+        console.log(`\n\nYou give ${this.name} a big pile of gold, they seem very pleased by your donation, sweeping it into their ever growing hoard. Its health has increased by 25`);
+        this.checkStats();
+    }
+}
+
+// Specific pet class, contains unique properties and methods for the virtual pet
+class Dolphin extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    swim() {
+        this.health += 10;
+        this.hunger -= 20;
+        // this.fun += 15;
+        console.log(`You take some time to swim with ${this.name}, playing in the water. Increasing its health by 10 but reducing its health by 20.`);
+        this.checkStats();
+    }
+    tricks() {
+        this.health += 15;
+        // this.fun += 30;
+        this.hunger -= 25;
+        console.log(`You spend some time with ${this.name}, encouraging them to perform tricks. Increasing its health by 15, but reducing its hunger by 25`);
+        this.checkStats();
+    }
+}
+
 module.exports = {
     Cat,
-    Dog
+    Dog,
+    Parrot,
+    Dragon,
+    Dolphin,
 };
