@@ -42,8 +42,8 @@ class Animal {
         let decreaseThirst = Math.random() * (15 - 5) + 15;
         let decreaseHunger = Math.random() * (15 - 5) + 15;
 
-        this.thirst -= decreaseThirst;
-        this.hunger -= decreaseHunger;
+        Math.round(this.thirst -= decreaseThirst);
+        Math.round(this.hunger -= decreaseHunger);
         this.checkStats();
 
         //Returns true or false, depending on stats
