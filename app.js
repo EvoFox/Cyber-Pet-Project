@@ -7,7 +7,10 @@ const inquirer = require("inquirer");
 // Import local modules
 const {
     Cat,
-    Dog
+    Dog,
+    Parrot,
+    Dragon,
+    Dolphin,
 } = require("./cyberPet");
 
 // Array for typeOfPetInquirer, should be analogous
@@ -21,7 +24,22 @@ potentialPets = [{
         key: "B",
         name: "Dog",
         value: "dog",
-    }
+    },
+    {
+        key: "C",
+        name: "Parrot",
+        value: "parrot",
+    },
+    {
+        key: "D",
+        name: "Dragon",
+        value: "dragon",
+    },
+    {
+        key: "E",
+        name: "Dolphin",
+        value: "dolphin",
+    },
 ]
 
 try {
@@ -101,7 +119,76 @@ try {
                     name: "Walk",
                     value: "walk",
                 }
-            ]
+            ];
+        } else if (typeOfPet.typeOfPet === "parrot") {
+            myPet = new Parrot(petName.nameOfPet);
+            options = [{
+                    key: "A",
+                    name: "Give Food",
+                    value: "feed"
+                },
+                {
+                    key: "B",
+                    name: "Give Water",
+                    value: "water",
+                },
+                {
+                    key: "C",
+                    name: "Let Fly",
+                    value: "fly"
+                },
+                {
+                    key: "D",
+                    name: "Give Puzzle",
+                    value: "puzzle",
+                }
+            ];
+        } else if (typeOfPet.typeOfPet === "dragon") {
+            myPet = new Dragon(petName.nameOfPet);
+            options = [{
+                    key: "A",
+                    name: "Give Food",
+                    value: "feed"
+                },
+                {
+                    key: "B",
+                    name: "Give Water",
+                    value: "water",
+                },
+                {
+                    key: "C",
+                    name: "Ride",
+                    value: "ride"
+                },
+                {
+                    key: "D",
+                    name: "Horde Gold",
+                    value: "gold",
+                }
+            ];
+        } else if (typeOfPet.typeOfPet === "dolphin") {
+            myPet = new Dolphin(petName.nameOfPet);
+            options = [{
+                    key: "A",
+                    name: "Give Food",
+                    value: "feed"
+                },
+                {
+                    key: "B",
+                    name: "Give Water",
+                    value: "water",
+                },
+                {
+                    key: "C",
+                    name: "Let Swim in the Sea",
+                    value: "swim"
+                },
+                {
+                    key: "D",
+                    name: "Perform Tricks",
+                    value: "tricks",
+                }
+            ];
         }
         timer()
 
@@ -122,7 +209,7 @@ try {
                 console.log(`${myPet.name}'s health has gotten too low, we're taking them away.`);
                 process.exit(0)
             }
-        }, 1000);
+        }, 60000);
 
     }
 
@@ -159,6 +246,25 @@ try {
             case "walk":
                 myPet.walk();
                 break;
+            case "fly":
+                myPet.fly();
+                break;
+            case "puzzle":
+                myPet.puzzle();
+                break;
+            case "gold":
+                myPet.gold();
+                break;
+            case "ride":
+                myPet.ride();
+                break;
+            case "swim":
+                myPet.swim();
+                break;
+            case "tricks":
+                myPet.tricks();
+                break;
+
         }
 
 
