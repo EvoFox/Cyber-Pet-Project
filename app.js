@@ -1,5 +1,5 @@
 // Debug line, for having certain aspects logged to console durng development
-const debug = true;
+const debug = false;
 
 // Import third party modules
 const inquirer = require("inquirer");
