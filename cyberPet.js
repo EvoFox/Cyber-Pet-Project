@@ -9,10 +9,12 @@ class Animal {
     eat() {
         this.hunger += 10;
         console.log(`\n\n${this.name} takes a moment to eat, recovering its thirst to ${this.thirst}.`);
+        this.checkStats();
     }
     drink() {
         this.thirst += 10;
         console.log(`\n\n${this.name} takes a drink of water, recovering its thirst to ${this.thirst}.`);
+        this.checkStats();
     }
     checkAlive() {
         if (this.health <= 0) {
